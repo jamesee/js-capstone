@@ -13,11 +13,11 @@
 
 
         <header class="mb-10 mt-10 text-center">
-            <h2 class= "text-gray-700 text-6xl font-semibold">Comic Reader</h2>
+            <h2 class="text-gray-700 text-6xl font-semibold">Comic Reader</h2>
             <h3 class="text-2xl font-semibold"> ~ By James Ee ~ </h3>
         </header>
 
- 
+
 
         <!-- Prev-button -->
         <div class="flex justify-between">
@@ -35,7 +35,7 @@
                         hover:border-transparent 
                         rounded-2xl
                         focus:ring-pink-900
-                        m-2">
+                        m-2" onclick="prevButton()">
                 <svg class="h-5 w-5 mr-2 fill-current" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
                     xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="-49 141 512 512"
                     style="enable-background:new -49 141 512 512;" xml:space="preserve">
@@ -51,12 +51,14 @@
 
 
                 <!-- input form -->
+
                 <div class="grid grid-cols-6 gap-3">
-                    <label for="listing-condition" class="inline-block align-middle text-base text-right font-medium text-gray-900">
+                    <label for="listing-condition"
+                        class="inline-block align-middle text-base text-right font-medium text-gray-900">
                         No. of Comics:
                     </label>
-    
-                    <select id="listing-condition" name="condition" required class="
+
+                    <select id="numOfComics" name="numOfComics" class="
                                     flex justify-center
                                     w-20
                                     h-10
@@ -71,17 +73,19 @@
                                     focus:border-pink-500
                                     sm:text-sm
                                     rounded-md
-                                ">
+                                " onchange="changeNumOfComics()">
                         <option value="1">1</option>
-                        <option value="3">3</option>
+                        <option value="3" selected>3</option>
                         <option value="5">5</option>
                     </select>
-    
-                    <label for="num-of-stock" class="block text-base text-right font-medium text-gray-900">
+
+                    <label for="comicNumber" class="block text-base text-right font-medium text-gray-900">
                         Comic Number:
                     </label>
-                    <div class="mt-1 flex justify-between">
-                        <input type="number" name="numOfStock" id="num-of-stock" required class="
+
+                        <div class="mt-1 flex justify-between">
+                        <form id="comicNumberForm">
+                            <input type="number" name="comicNumber" id="comicNumber" required class="
                                         flex justify-center
                                         w-30
                                         h-10
@@ -92,9 +96,8 @@
                                         border-pink-600
                                         rounded-md
                                       " />
-                    </div>
-    
-                    <button type="submit" class="
+                        </div>
+                        <button type="submit" class="
                                         ml-4
                                         h-10 w-10
                                         inline-flex
@@ -115,15 +118,16 @@
                                         focus:ring-2
                                         focus:ring-offset-2
                                         focus:ring-pink-500
-                                    " id="submit-btn">
-                        GO
-                    </button>
-    
+                                    " 
+                                id="submit-btn">
+                            GO
+                        </button>
+                    </form>
                 </div>
-    
-    
+
+
             </div>
-    
+
 
             <!-- Next-button -->
 
@@ -141,7 +145,7 @@
                         hover:border-transparent 
                         rounded-2xl
                         focus:ring-pink-900
-                        m-2">
+                        m-2" onclick="nextButton()">
                 Next
                 <svg class="h-5 w-5 ml-2 fill-current" clasversion="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
                     xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="-49 141 512 512"
@@ -173,7 +177,7 @@
             <!-- cards go here -->
             <div class="card hover:shadow-lg">
                 <img src="https://imgs.xkcd.com/comics/fissile_raspberry_isotopes.png" alt="noodles"
-                class="flex justify-items-center sm:h-1/2 md:max-h-full md:min-w-full object-contain">
+                    class="flex justify-items-center sm:h-1/2 md:max-h-full md:min-w-full object-contain">
 
                 <div class="m-4">
                     <div class="flex justify-between">
@@ -239,7 +243,8 @@
         </div>
         </div>
     </main>
-
+    <script src="javascripts/index.js"></script>
 </body>
+
 
 </html>
