@@ -1,3 +1,4 @@
+// references :
 // https://www.javascripttutorial.net/dom/manipulating/remove-all-child-nodes/
 // https://gomakethings.com/serializing-form-data-with-the-vanilla-js-formdata-object/
 // https://dev.to/vijaypushkin/dead-simple-state-management-in-vanilla-javascript-24p0
@@ -75,7 +76,6 @@ const App = (function () {
             State.comicMax = Number(data.num)
             State.comicNum = Number(data.num);
             updateComicsList();
-            // State.isLoading = false;
             App
             .render()
             .setupEvents();
@@ -247,11 +247,9 @@ const App = (function () {
     }
     
     function render() {
-        // app.innerHTML = navbarRender();
         console.log(`[DEBUG] State.comicNum: ${State.comicNum}, State.numOfComics: ${State.numOfComics}, State.comicList: ${State.comicsList}`);
         removeAllChildNodes(navbar);
         navbar.insertAdjacentHTML("afterbegin", navbarRender());
-        // insertOptions();
 
   
         removeAllChildNodes(app);
@@ -260,22 +258,16 @@ const App = (function () {
 
         fetchComics(State.comicsList)
             .then(dataList => {
-                State.isLoading = false;
-                // console.log(dataList);
                 const html = dataList.map(data => {
                     return card(data);
                 }).join("");
-                console.log(`[DEBUG] isLoading : ${State.isLoading}`)
                 removeAllChildNodes(app);
                 app.insertAdjacentHTML("afterbegin", html);
-
-                
                
             })
             .catch((err) => {
                 console.log('Fetch Error : ', err);
             });
-
 
         return App
     }
