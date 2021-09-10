@@ -1,5 +1,6 @@
 // https://www.javascripttutorial.net/dom/manipulating/remove-all-child-nodes/
 // https://gomakethings.com/serializing-form-data-with-the-vanilla-js-formdata-object/
+// https://dev.to/vijaypushkin/dead-simple-state-management-in-vanilla-javascript-24p0
 
 const navbarRender = () => {
     return `
@@ -106,7 +107,6 @@ const navbarRender = () => {
                         l115.5-115.5C460.366,409.989,463,403.63,463,397s-2.634-12.989-7.322-17.678l-115.5-115.5c-9.763-9.762-25.593-9.763-35.355,0
                         c-9.763,9.763-9.763,25.592,0,35.355l72.822,72.822H-24c-13.808,0-25,11.193-25,25S-37.808,422-24,422z" />
     </button>
-
         `
 }
 
