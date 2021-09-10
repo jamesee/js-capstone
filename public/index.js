@@ -28,7 +28,6 @@ const fetchComics = async (comicNumberList) => {
         const url = API_URL + comicNum
 
         return fetch(url, {
-
             headers: {
                 method: 'GET',
             }
