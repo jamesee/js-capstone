@@ -326,12 +326,12 @@ const App = (function () {
         let inputComicNum = Number(formData.get("comicNumber"));
     
         if (inputComicNum > State.comicMax) {
-            console.log(`[Error] Comic Number must lesser or equal to ${State.comicMax} !`)
-            errormsg.innerHTML = `[Error] Must be lesser or equal to ${State.comicMax} !` 
+            console.log(`[Error] Comic Number must lesser than ${State.comicMax +1} !`)
+            errormsg.innerHTML = `[Error] Must be lesser than ${State.comicMax +1} !` 
             return
         } else if (inputComicNum < State.comicMin) {
-            console.log(`[Error] Comic Number must greater than ${State.comicMin} !`)
-            errormsg.innerHTML = `[Error] Must be greater than ${State.comicMin} !` 
+            console.log(`[Error] Comic Number must greater than ${State.comicMin -1} !`)
+            errormsg.innerHTML = `[Error] Must be greater than ${State.comicMin -1} !` 
             return
         }
 
