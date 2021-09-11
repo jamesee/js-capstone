@@ -297,6 +297,7 @@ const App = (function () {
         App
             .render()
             .setupEvents();
+            
     }
 
     function randomButton() {
