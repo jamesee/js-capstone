@@ -275,6 +275,9 @@ const App = (function () {
     function nextButton() {
         console.log("[DEBUG] next");
         State.comicNum += State.numOfComics;
+        if (State.comicNum > State.comicMax){
+            State.comicNum = State.comicMax;
+        }
         updateComicsList();
 
         App
@@ -285,6 +288,10 @@ const App = (function () {
     function prevButton() {
         console.log("[DEBUG] prev");
         State.comicNum -= State.numOfComics;
+        if (State.comicNum < State.comicMin){
+            State.comicNum = State.comicMin;
+        }
+        
         updateComicsList();
 
         App
