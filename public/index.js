@@ -20,7 +20,145 @@ const card = (data) => {
             `
 }
 
+const navbarRender = (comicNum) => {
+    return `
+    <!-- Next Button -->
+    <button id="prev" class="
+                        btn
+                        flex justify-center md:justify-end
+                        bg-transparent 
+                        hover:bg-pink-600 
+                        text-pink-700 
+                        font-semibold 
+                        hover:text-white 
+                        py-2 px-10 
+                        border 
+                        border-pink-600 
+                        hover:border-transparent 
+                        rounded-2xl
+                        focus:ring-pink-900
+                        m-2">
+        <svg class="h-5 w-5 mr-2 fill-current" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="-49 141 512 512"
+            style="enable-background:new -49 141 512 512;" xml:space="preserve">
+            <path id="XMLID_10_"
+                d="M438,372H36.355l72.822-72.822c9.763-9.763,9.763-25.592,0-35.355c-9.763-9.764-25.593-9.762-35.355,0 l-115.5,115.5C-46.366,384.01-49,390.369-49,397s2.634,12.989,7.322,17.678l115.5,115.5c9.763,9.762,25.593,9.763,35.355,0 c9.763-9.763,9.763-25.592,0-35.355L36.355,422H438c13.808,0,25-11.193,25-25S451.808,372,438,372z">
+            </path>
+        </svg>
+        Prev
+    </button>
 
+    <!-- Selector and Form -->
+    <div class="flex space-x-6">
+
+            <!-- No. of Comics Selector -->
+            <!--
+            <label for="listing-condition" class="block py-2 text-base text-right font-medium text-gray-900">
+            No. of Comics per view:
+            </label>
+            -->
+                            
+            <select id="numOfComics" name="numOfComics"  class="ml-2 mr-2 w-50 h-10 text-center px-5 font-medium">
+                <option value="">-- Number of Comics Per Page --</option>
+                <option class="text-center" value="1">1</option>
+                <option class="text-center" value="3">3</option>
+                <option class="text-center" value="5">5</option>
+            </select>
+
+            <!-- ComicNumber Form -->
+            <label for="comicNumberForm" class="block p-2 text-base text-right font-medium text-gray-900">
+            GoTo Comic Number: 
+            </label>
+
+            <form id="comicNumberForm">    
+                    <input type="number" name="comicNumber" id="comicNumber" placeholder="${comicNum}" required class="
+                                        w-50
+                                        h-10
+                                        shadow-sm
+                                        text-base
+                                        text-center
+                                        focus:ring-pink-500 focus:border-pink-500
+                                        border-pink-600
+                                        rounded-md
+                                    " />
+    
+                    <input type="submit" value="GO" class="
+                                            ml-2
+                                            h-10 w-10
+                                            px-2
+                                            border 
+                                            border-transparent
+                                            shadow-sm
+                                            font-medium
+                                            rounded-md
+                                            text-white
+                                            bg-pink-600
+                                            hover:bg-pink-700
+                                            focus:outline-none
+                                            focus:ring-2
+                                            focus:ring-offset-2
+                                            focus:ring-pink-500
+                                        " />
+            </form>
+
+            <input id="random-btn" type="button" value="RANDOM" class="
+                                            ml-2
+                                            h-10 w-30
+                                            px-2
+                                            border 
+                                            border-transparent
+                                            shadow-sm
+                                            font-medium
+                                            rounded-md
+                                            text-white
+                                            bg-pink-600
+                                            hover:bg-pink-700
+                                            focus:outline-none
+                                            focus:ring-2
+                                            focus:ring-offset-2
+                                            focus:ring-pink-500
+                                        " />
+    
+    
+    
+    
+    </div>
+    
+    <!-- Next Button -->
+    <button id="next" class="
+                    btn
+                    flex justify-center md:justify-end
+                    bg-transparent 
+                    hover:bg-pink-600 
+                    text-pink-700 
+                    font-semibold 
+                    hover:text-white 
+                    py-2 px-10 
+                    border 
+                    border-pink-600 
+                    hover:border-transparent 
+                    rounded-2xl
+                    focus:ring-pink-900
+                    m-2">
+        Next
+        <svg class="h-5 w-5 ml-2 fill-current" clasversion="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="-49 141 512 512"
+            style="enable-background:new -49 141 512 512;" xml:space="preserve">
+            <path id="XMLID_11_"
+                d="M-24,422h401.645l-72.822,72.822c-9.763,9.763-9.763,25.592,0,35.355c9.763,9.764,25.593,9.762,35.355,0
+                        l115.5-115.5C460.366,409.989,463,403.63,463,397s-2.634-12.989-7.322-17.678l-115.5-115.5c-9.763-9.762-25.593-9.763-35.355,0
+                        c-9.763,9.763-9.763,25.592,0,35.355l72.822,72.822H-24c-13.808,0-25,11.193-25,25S-37.808,422-24,422z" />
+    </button>
+        `
+}
+
+const isLoading = () =>{
+    return `
+    <div class ="flex justify-center text-base text-pink-600 text-center text-4xl font-semibold"> 
+    Loading ...
+    </div>
+    `
+}
 
 const fetchComics = async (comicNumberList) => {
     const requests = comicNumberList.map(comicNum => {
@@ -106,152 +244,12 @@ const App = (function () {
         }
     }
 
-    const isLoading = () =>{
-        return `
-        <div class ="flex justify-center text-base text-pink-600 text-center text-4xl font-semibold"> 
-        Loading ...
-        </div>
-        `
-    }
-
-    const navbarRender = () => {
-        return `
-        <!-- Next Button -->
-        <button id="prev" class="
-                            btn
-                            flex justify-center md:justify-end
-                            bg-transparent 
-                            hover:bg-pink-600 
-                            text-pink-700 
-                            font-semibold 
-                            hover:text-white 
-                            py-2 px-10 
-                            border 
-                            border-pink-600 
-                            hover:border-transparent 
-                            rounded-2xl
-                            focus:ring-pink-900
-                            m-2">
-            <svg class="h-5 w-5 mr-2 fill-current" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
-                xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="-49 141 512 512"
-                style="enable-background:new -49 141 512 512;" xml:space="preserve">
-                <path id="XMLID_10_"
-                    d="M438,372H36.355l72.822-72.822c9.763-9.763,9.763-25.592,0-35.355c-9.763-9.764-25.593-9.762-35.355,0 l-115.5,115.5C-46.366,384.01-49,390.369-49,397s2.634,12.989,7.322,17.678l115.5,115.5c9.763,9.762,25.593,9.763,35.355,0 c9.763-9.763,9.763-25.592,0-35.355L36.355,422H438c13.808,0,25-11.193,25-25S451.808,372,438,372z">
-                </path>
-            </svg>
-            Prev
-        </button>
-    
-        <!-- Selector and Form -->
-        <div class="flex space-x-6">
-    
-                <!-- No. of Comics Selector -->
-                <!--
-                <label for="listing-condition" class="block py-2 text-base text-right font-medium text-gray-900">
-                No. of Comics per view:
-                </label>
-                -->
-                                
-                <select id="numOfComics" name="numOfComics"  class="ml-2 mr-2 w-50 h-10 text-center px-5 font-medium">
-                    <option value="">-- Number of Comics Per Page --</option>
-                    <option class="text-center" value="1">1</option>
-                    <option class="text-center" value="3">3</option>
-                    <option class="text-center" value="5">5</option>
-                </select>
-    
-                <!-- ComicNumber Form -->
-                <label for="comicNumberForm" class="block p-2 text-base text-right font-medium text-gray-900">
-                GoTo Comic Number: 
-                </label>
-    
-                <form id="comicNumberForm">    
-                        <input type="number" name="comicNumber" id="comicNumber" placeholder="${State.comicNum}" required class="
-                                            w-50
-                                            h-10
-                                            shadow-sm
-                                            text-base
-                                            text-center
-                                            focus:ring-pink-500 focus:border-pink-500
-                                            border-pink-600
-                                            rounded-md
-                                        " />
-        
-                        <input type="submit" value="GO" class="
-                                                ml-2
-                                                h-10 w-10
-                                                px-2
-                                                border 
-                                                border-transparent
-                                                shadow-sm
-                                                font-medium
-                                                rounded-md
-                                                text-white
-                                                bg-pink-600
-                                                hover:bg-pink-700
-                                                focus:outline-none
-                                                focus:ring-2
-                                                focus:ring-offset-2
-                                                focus:ring-pink-500
-                                            " />
-                </form>
-
-                <input id="random-btn" type="button" value="RANDOM" class="
-                                                ml-2
-                                                h-10 w-30
-                                                px-2
-                                                border 
-                                                border-transparent
-                                                shadow-sm
-                                                font-medium
-                                                rounded-md
-                                                text-white
-                                                bg-pink-600
-                                                hover:bg-pink-700
-                                                focus:outline-none
-                                                focus:ring-2
-                                                focus:ring-offset-2
-                                                focus:ring-pink-500
-                                            " />
-        
-        
-        
-        
-        </div>
-        
-        <!-- Next Button -->
-        <button id="next" class="
-                        btn
-                        flex justify-center md:justify-end
-                        bg-transparent 
-                        hover:bg-pink-600 
-                        text-pink-700 
-                        font-semibold 
-                        hover:text-white 
-                        py-2 px-10 
-                        border 
-                        border-pink-600 
-                        hover:border-transparent 
-                        rounded-2xl
-                        focus:ring-pink-900
-                        m-2">
-            Next
-            <svg class="h-5 w-5 ml-2 fill-current" clasversion="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
-                xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="-49 141 512 512"
-                style="enable-background:new -49 141 512 512;" xml:space="preserve">
-                <path id="XMLID_11_"
-                    d="M-24,422h401.645l-72.822,72.822c-9.763,9.763-9.763,25.592,0,35.355c9.763,9.764,25.593,9.762,35.355,0
-                            l115.5-115.5C460.366,409.989,463,403.63,463,397s-2.634-12.989-7.322-17.678l-115.5-115.5c-9.763-9.762-25.593-9.763-35.355,0
-                            c-9.763,9.763-9.763,25.592,0,35.355l72.822,72.822H-24c-13.808,0-25,11.193-25,25S-37.808,422-24,422z" />
-        </button>
-            `
-    }
-    
     function render() {
         console.log(`[DEBUG] State.comicNum: ${State.comicNum}, State.numOfComics: ${State.numOfComics}, State.comicList: ${State.comicsList}`);
-        removeAllChildNodes(navbar);
-        navbar.insertAdjacentHTML("afterbegin", navbarRender());
 
-  
+        removeAllChildNodes(navbar);
+        navbar.insertAdjacentHTML("afterbegin", navbarRender(State.comicNum));
+
         removeAllChildNodes(app);
         app.innerHTML = isLoading()
         
@@ -354,11 +352,17 @@ const App = (function () {
             document
                 .getElementById("comicNumberForm")
                 .addEventListener("submit", App.handleComicsNumberFormSubmit);
-
-
     }
 
-    return { initialise, render, prevButton, nextButton, randomButton, handleNumOfComicsChange, handleComicsNumberFormSubmit, setupEvents }
+    return {    initialise, 
+                render, 
+                prevButton, 
+                nextButton, 
+                randomButton, 
+                handleNumOfComicsChange, 
+                handleComicsNumberFormSubmit, 
+                setupEvents 
+            }
 
 })();
 
