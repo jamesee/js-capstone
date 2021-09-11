@@ -14,16 +14,16 @@ Also, UI requirement is minimal as the main focus of the project is on evaluatin
 
 # Project Setup
 
-* Installed Tailwind CSS to do the UI styling. To compile the tailwind settings at src/style.css into public/style.css:
+* Tailwind CSS is installed to do the minimal UI styling. Execute the following command to compile tailwind settings at *src/style.css* into *public/style.css*:
 ```bash
 $ npm run build-css
 ```
 
-* A skeleton html file (public/index.htm) is created in the "public" folder.
+* A skeleton html file *public/index.htm* is created in the "public" folder.
 
-* An javascript file (public/index.js) is created. This is the main file where all the javascript functions for the comic reader is written.
+* The javascript file where all the javascript functions for the comic reader is written is at *public/index.js*. This is the main file.
 
-# Run the website locally
+# To serve the Comic Reader website locally
 
 ```bash
 $ live-server public/
@@ -42,15 +42,15 @@ https://jamesee.github.io/js-capstone
 
 * On loading the website, it will do an initial api call to https://xkcd.now.sh/?comic=latest to get the information of the latest comic available. 
 
-* User can choose to display between 1, 3, 5 comics per page using the dropdown.
+* User can choose to display between 1, 3, or 5 comics per page using the dropdown.
 
 * User can also choose the comic number he wishes to see using the input field and click the "GO" button. User can also decide to randomly fetch comics using the "RANDOM" button.
 
-* As part of the projet requirement, if user chose 3 comics per page with latest comic number (say 2513), the webpage will display comic numbers [ 2512, 2513, 1]. If user chose 5 comics per page with the latest comic number 2513, the webpage will then display comic numbers [ 2511, 2512, 2513, 1, 2].
+* As part of the projet requirement, if user chose 3 comics per page with latest comic number say 2513 (latest comic number), the webpage will display comic numbers [ 2512, 2513, 1]. If user chose 5 comics per page with the latest comic number 2513, the webpage will then display comic numbers [ 2511, 2512, 2513, 1, 2].
 
 * Although this not a project requirement, the website also can handle cases when user chose to display 3 comics per page with comic number = 1, the webpage will display comic numbers [2513, 1, 2]. 
 
-* The Prev and Next button is self-explanatory.
+* The "Prev" and "Next" button is self-explanatory.
 
 * Display of "Loading ..." to improve user interface experience.
 
