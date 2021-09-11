@@ -14,21 +14,21 @@ Also, UI requirement is minimal as the main focus of the project is on evaluatin
 
 # Project Setup
 
-* Tailwind CSS is installed to do the minimal UI styling. Execute the following command to compile tailwind settings at *src/style.css* into *public/style.css*:
+* Tailwind CSS is installed to do the minimal UI styling. To compile tailwind settings at *src/style.css* into *public/style.css*, please execute the following command:
 ```bash
 $ npm run build-css
 ```
 
-* A skeleton html file *public/index.htm* is created in the "public" folder.
+* A skeleton html file *public/index.htm* is placed in the *public* folder.
 
-* The javascript file where all the javascript functions for the comic reader is written is at *public/index.js*. This is the main file.
+* The javascript file where all the functions for the comic reader is written is at *public/index.js*. This is the main file.
 
 # To serve the Comic Reader website locally
 
 ```bash
 $ live-server public/
 ```
-The website is served at http://127.0.0.1:8080
+The webpage is served at http://127.0.0.1:8080
 
 # Deployed the Comic Reader at Github Pages
 
