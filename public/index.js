@@ -252,6 +252,13 @@ const App = (function () {
 
         removeAllChildNodes(navbar);
         navbar.insertAdjacentHTML("afterbegin", navbarRender(State.comicNum));
+        
+        if (State.comicNum >= State.comicMax){
+            next.classList.add(`invisible`);
+        }
+        if (State.comicNum <= State.comicMin){
+            prev.classList.add(`invisible`);
+        }
 
         removeAllChildNodes(app);
         app.innerHTML = isLoading()
