@@ -44,13 +44,15 @@ https://jamesee.github.io/js-capstone
 
 * User can choose to display between 1, 3, or 5 comics per page using the dropdown.
 
-* User can also choose the comic number he wishes to see using the input field and click the "GO" button. User can also decide to randomly fetch comics using the "RANDOM" button.
+* User can also choose the comic number he wishes to see using the input field and click the "GO" button. Error messages will be shown if user input number lesser than 1 or number greater than latest comic number. 
+
+* User can also decide to randomly fetch comics using the "RANDOM" button.
 
 * As part of the projet requirement, if user chose 3 comics per page with latest comic number say 2513 (latest comic number), the webpage will display comic numbers [ 2512, 2513, 1]. If user chose 5 comics per page with the latest comic number 2513, the webpage will then display comic numbers [ 2511, 2512, 2513, 1, 2].
 
 * Although this not a project requirement, the website also can handle cases when user chose to display 3 comics per page with comic number = 1, the webpage will display comic numbers [2513, 1, 2]. 
 
-* The "Prev" and "Next" button is self-explanatory.
+* The "Prev" and "Next" button will be *invisible* when (State.comicNum <= State.comicMin) and (State.comicNum >= State.comicMax) respectively.
 
 * Display of "Loading ..." to improve user interface experience.
 
