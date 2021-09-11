@@ -69,10 +69,10 @@ const navbarRender = (comicNum) => {
             <label for="comicNumberForm" class="block p-2 text-base text-right font-medium text-gray-900">
             GoTo Comic Number: 
             </label>
-
+            
             <form id="comicNumberForm">    
                     <input type="number" name="comicNumber" id="comicNumber" placeholder="${comicNum}" required class="
-                                        w-50
+                                        w-100
                                         h-10
                                         shadow-sm
                                         text-base
@@ -81,7 +81,7 @@ const navbarRender = (comicNum) => {
                                         border-pink-600
                                         rounded-md
                                     " />
-    
+                   
                     <input type="submit" value="GO" class="
                                             ml-2
                                             h-10 w-10
@@ -99,8 +99,11 @@ const navbarRender = (comicNum) => {
                                             focus:ring-offset-2
                                             focus:ring-pink-500
                                         " />
-            </form>
 
+                <div id="errormsg" class="p-1 text-red-600 font-xs" ></div>
+                
+                    
+            </form>
             <input id="random-btn" type="button" value="RANDOM" class="
                                             ml-2
                                             h-10 w-30
@@ -253,7 +256,6 @@ const App = (function () {
         removeAllChildNodes(app);
         app.innerHTML = isLoading()
         
-
         fetchComics(State.comicsList)
             .then(dataList => {
                 const html = dataList.map(data => {
@@ -272,7 +274,7 @@ const App = (function () {
 
     function nextButton() {
         console.log("[DEBUG] next");
-        State.comicNum += 1;
+        State.comicNum += State.numOfComics;
         updateComicsList();
 
         App
@@ -282,7 +284,7 @@ const App = (function () {
 
     function prevButton() {
         console.log("[DEBUG] prev");
-        State.comicNum -= 1;
+        State.comicNum -= State.numOfComics;
         updateComicsList();
 
         App
@@ -319,7 +321,21 @@ const App = (function () {
 
         // https://gomakethings.com/serializing-form-data-with-the-vanilla-js-formdata-object/
         formData = new FormData(e.target);
-        State.comicNum = Number(formData.get("comicNumber"));
+
+        // error check
+        let inputComicNum = Number(formData.get("comicNumber"));
+    
+        if (inputComicNum > State.comicMax) {
+            console.log(`[Error] Comic Number must lesser or equal to ${State.comicMax} !`)
+            errormsg.innerHTML = `[Error] Must be lesser or equal to ${State.comicMax} !` 
+            return
+        } else if (inputComicNum < State.comicMin) {
+            console.log(`[Error] Comic Number must greater than ${State.comicMin} !`)
+            errormsg.innerHTML = `[Error] Must be greater than ${State.comicMin} !` 
+            return
+        }
+
+        State.comicNum =inputComicNum;
         updateComicsList();
 
         App
@@ -354,14 +370,15 @@ const App = (function () {
                 .addEventListener("submit", App.handleComicsNumberFormSubmit);
     }
 
-    return {    initialise, 
-                render, 
-                prevButton, 
-                nextButton, 
-                randomButton, 
-                handleNumOfComicsChange, 
-                handleComicsNumberFormSubmit, 
-                setupEvents 
+    return {    
+            initialise, 
+            render, 
+            prevButton, 
+            nextButton, 
+            randomButton, 
+            handleNumOfComicsChange, 
+            handleComicsNumberFormSubmit, 
+            setupEvents 
             }
 
 })();
