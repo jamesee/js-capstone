@@ -199,7 +199,7 @@ const App = (function () {
         comicMin: 1,
         comicMax: 0,
         numOfComics: 3,
-        comicsList: [990, 1000, 1001]
+        comicsList: [999, 1000, 1001]
     }
 
     const initialise  = () => {
