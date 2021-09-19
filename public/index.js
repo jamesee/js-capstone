@@ -216,7 +216,7 @@ const App = (function () {
             console.log(data);
             State.comicMax = Number(data.num)
             State.comicNum = Number(data.num);
-            updateComicsList();
+            State.comicsList = comicsList(State.comicNum, State.numOfComics);
             App
             .render()
             .setupEvents();
@@ -224,28 +224,37 @@ const App = (function () {
         .catch(err => console.log(err));
     } 
 
-    const myComicNum = (comicNum) => {
-        return  (comicNum > State.comicMax)  ? Number(comicNum - State.comicMax) : 
-                (comicNum < State.comicMin ) ? Number(State.comicMax + comicNum) : comicNum
+
+
+    const comicsList = (comicNum, numOfComics) => {
+        
+        const myComicNum = (comicNum) => {
+            return  (comicNum > State.comicMax)  ? Number(comicNum - State.comicMax) : 
+                    (comicNum < State.comicMin ) ? Number(State.comicMax + comicNum) : comicNum
+        }
+
+        return Array(numOfComics)
+                .fill()
+                .map((element, index) => myComicNum(comicNum + index - parseInt(numOfComics/2)))
     }
 
-    const updateComicsList = () => {
-        State.comicsList = [];
-        switch (State.numOfComics) {
-            case 1:
-                State.comicsList.push(myComicNum(State.comicNum));
-                break;
-            case 5:
-                for (let i = 0; i < State.numOfComics; i++) {
-                    State.comicsList.push(myComicNum(State.comicNum + i - 2) )
-                }
-                break;
-            default:
-                for (let i = 0; i < State.numOfComics; i++) {
-                    State.comicsList.push(myComicNum(State.comicNum + i - 1))
-                }
-        }
-    }
+    // const updateComicsList = () => {
+    //     State.comicsList = [];
+    //     switch (State.numOfComics) {
+    //         case 1:
+    //             State.comicsList.push(myComicNum(State.comicNum));
+    //             break;
+    //         case 5:
+    //             for (let i = 0; i < State.numOfComics; i++) {
+    //                 State.comicsList.push(myComicNum(State.comicNum + i - 2) )
+    //             }
+    //             break;
+    //         default:
+    //             for (let i = 0; i < State.numOfComics; i++) {
+    //                 State.comicsList.push(myComicNum(State.comicNum + i - 1))
+    //             }
+    //     }
+    // }
 
     function render() {
         console.log(`[DEBUG] State.comicNum: ${State.comicNum}, State.numOfComics: ${State.numOfComics}, State.comicList: ${State.comicsList}`);
@@ -285,7 +294,7 @@ const App = (function () {
         if (State.comicNum > State.comicMax){
             State.comicNum = State.comicMax;
         }
-        updateComicsList();
+        State.comicsList = comicsList(State.comicNum, State.numOfComics);
 
         App
             .render()
@@ -299,7 +308,7 @@ const App = (function () {
             State.comicNum = State.comicMin;
         }
         
-        updateComicsList();
+        State.comicsList = comicsList(State.comicNum, State.numOfComics);
 
         App
             .render()
@@ -310,7 +319,7 @@ const App = (function () {
     function randomButton() {
         console.log("[DEBUG] randomButton");
         State.comicNum = parseInt(Math.random() * (State.comicMax - State.comicMin) + State.comicMin);
-        updateComicsList();
+        State.comicsList = comicsList(State.comicNum, State.numOfComics);
 
         App
             .render()
@@ -324,7 +333,7 @@ const App = (function () {
         State.numOfComics = Number(e.target.value);
         app.classList.add(`lg:grid-cols-${State.numOfComics}`);
 
-        updateComicsList();
+        State.comicsList = comicsList(State.comicNum, State.numOfComics);
         App
             .render()
             .setupEvents();
@@ -351,7 +360,7 @@ const App = (function () {
         }
 
         State.comicNum =inputComicNum;
-        updateComicsList();
+        State.comicsList = comicsList(State.comicNum, State.numOfComics);
 
         App
             .render()
