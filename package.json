@@ -2,13 +2,10 @@
   "name": "js-capstone",
   "version": "1.0.0",
   "description": "Comic Reader",
-  "homepage": "https://jamesee.github.io/js-capstone",
   "main": "index.js",
   "scripts": {
-    "build": "html-minifier --collapse-whitespace public/index.html -o prod/index.html",
-    "build-css": "tailwindcss build src/styles.css -o public/styles.css",
-    "predeploy": "npm run build",
-    "deploy": "npm run build && gh-pages -d dist"
+    "build": "webpack --mode production",
+    "build-css": "tailwindcss build src/styles.css -o public/styles.css"
   },
   "repository": {
     "type": "git",
@@ -26,6 +23,8 @@
     "tailwindcss": "^2.2.9"
   },
   "devDependencies": {
-    "gh-pages": "^3.2.3"
+    "gh-pages": "^3.2.3",
+    "webpack": "^4.46.0",
+    "webpack-cli": "^4.8.0"
   }
 }
