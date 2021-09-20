@@ -4,8 +4,8 @@
   "description": "Comic Reader",
   "main": "index.js",
   "scripts": {
-    "build": "webpack --mode production && tailwindcss build -i src/styles.css -o dist/styles.css",
-    "build-css": "tailwindcss build src/styles.css -o public/styles.css"
+    "build": "webpack --mode production && tailwindcss build -i src/styles.css -o docs/styles.css",
+    "build-css": "tailwindcss build -i src/styles.css -o docs/styles.css"
   },
   "repository": {
     "type": "git",
