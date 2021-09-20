@@ -5,7 +5,7 @@
   "homepage": "https://jamesee.github.io/js-capstone",
   "main": "index.js",
   "scripts": {
-    "build": "html-minifier --collapse-whitespace public/index.html -o prod/index.html",
+    "build": "html-minifier --collapse-whitespace public/index.html -o docs/index.html",
     "build-css": "tailwindcss build src/styles.css -o public/styles.css",
     "predeploy": "npm run build",
     "deploy": "npm run build && gh-pages -d dist"
