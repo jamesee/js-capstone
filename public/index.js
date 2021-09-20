@@ -4,6 +4,8 @@
 // https://dev.to/vijaypushkin/dead-simple-state-management-in-vanilla-javascript-24p0
 
 
+
+
 const card = (data) => {
     return `
             <div class="card hover:shadow-lg">
@@ -155,9 +157,9 @@ const navbarRender = (comicNum) => {
         `
 }
 
-const isLoading = () =>{
+const isLoading = (numOfComics) =>{
     return `
-    <div class ="flex justify-center text-base text-pink-600 text-center text-4xl font-semibold"> 
+    <div class ="flex justify-center text-base text-pink-600 text-center text-6xl font-semibold lg:col-span-${numOfComics}"> 
     Loading ...
     </div>
     `
@@ -208,7 +210,7 @@ const App = (function () {
     const initialise  = () => {
 
         removeAllChildNodes(app);
-        app.innerHTML = isLoading();
+        app.innerHTML = isLoading(State.numOfComics);
 
         fetch("https://xkcd.now.sh/?comic=latest")
         .then(response => {return response.json()})
@@ -217,13 +219,13 @@ const App = (function () {
             State.comicMax = Number(data.num)
             State.comicNum = Number(data.num);
             State.comicsList = comicsList(State.comicNum, State.numOfComics);
+
             App
             .render()
             .setupEvents();
         })
         .catch(err => console.log(err));
     } 
-
 
 
     const comicsList = (comicNum, numOfComics) => {
@@ -265,12 +267,13 @@ const App = (function () {
         if (State.comicNum >= State.comicMax){
             next.classList.add(`invisible`);
         }
+
         if (State.comicNum <= State.comicMin){
             prev.classList.add(`invisible`);
         }
 
         removeAllChildNodes(app);
-        app.innerHTML = isLoading()
+        app.innerHTML = isLoading(State.numOfComics)
         
         fetchComics(State.comicsList)
             .then(dataList => {
