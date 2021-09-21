@@ -14,7 +14,7 @@ const card = (data) => {
                 <div class="m-4">
                     <div class="flex justify-between">
                         <span class="font-bold text-xl">${data.title}</span>
-                        <span class="badge text-sm">${data.num}</span>
+                        <span class="badge text-sm">#${data.num}</span>
                     </div>
                     <span class="block text-gray-700 text-base">${data.alt}</span>
                 </div>
